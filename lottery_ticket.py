@@ -92,12 +92,12 @@ class LotteryTicket:
                 shadow=True, labeldistance=1.2, startangle=0, pctdistance=1.5
                 )
 
-        # plt.savefig('./test1.jpg')
+        plt.savefig('./test1.jpg')
         plt.show()
         plt.pie(x=self.blue_value, labels=self.blue_label, autopct='%3.1f %%',
                 shadow=True, labeldistance=0.9, startangle=0, pctdistance=1.2
                 )
-        # plt.savefig('./test2.jpg')
+        plt.savefig('./test2.jpg')
         plt.show()
 
 
