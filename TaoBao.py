@@ -56,34 +56,16 @@ class Tao_bao:
             input_content.send_keys(self.key)
             submit.click()
             self.browser.switch_to_window(now_handle)
-            # time.sleep(15)
-            # page_number = self.wait.until(
-            #     EC.presence_of_element_located((By.CSS_SELECTOR, "#J_waterfallPagination > div > div > a.page-next.iconfont"))
-            # )
             total = self.wait.until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "#mainsrp-pager > div > div > div > div.total"))
             )
             return total.text
         except TimeoutException:
             print('Wrong!')
-        # try:
-        #     self.n += 1
-        #     print("正在翻页：{0}".format(self.n))
-        #     next_page = self.wait.until(
-        #         EC.element_to_be_clickable((By.CSS_SELECTOR, "#mainsrp-pager > div > div > div > ul > li.item.next > a"))
-        #     )
-        #     next_page.click()
-        #     return self.login()
-        # except TimeoutException:
-        #     print("Response is overtime!")
-        # page_number.click()
 
     def start_interface(self):
         content = self.search()
         total = int(re.compile(r'(\d+)', re.S).search(content).group(1))
-        # grounds = [i for i in range(2, total+1)]
-        # pool = Pool(5)
-        # pool.map(self.next_page, grounds)
         for i in range(2, total + 1):
             self.next_page(i)
 
@@ -111,15 +93,6 @@ class Tao_bao:
         get content and download this content
         :return:
         """
-        # input_content = self.wait.until(
-        #     EC.presence_of_element_located((By.CSS_SELECTOR, '#title'))
-        # )
-        # submit = self.wait.until(
-        #     EC.presence_of_element_located((By.CSS_SELECTOR, '#J_BottomSearchForm > button'))
-        # )
-        # input_content.clear()
-        # input_content.send_keys('高跟鞋')
-        # submit.click()
         self.wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '#mainsrp-itemlist > div > div > div:nth-child(1)'))
         )
@@ -131,21 +104,6 @@ class Tao_bao:
         totals = [(name, src) for (name, src) in zip(names, srcs)]
         for total in totals:
             self.download(total[1], total[0])
-        # try:
-        #     self.n += 1
-        #     print("正在翻页：{0}".format(self.n))
-        #     next_page = self.wait.until(
-        #         EC.element_to_be_clickable((By.CSS_SELECTOR, "#mainsrp-pager > div > div > div > ul > li.item.next > a"))
-        #     )
-        #     next_page.click()
-        #     return self.get_content()
-        # except TimeoutException:
-        #     print("Response is overtime!")
-        # doc = pq(html)
-        # items = doc('#mainsrp-itemlist > div > div > div:nth-child(1)').items()
-        # for item in items:
-        #     print(item)
-        #     exit()
 
     def download(self, url, name):
         print('正在下载：{0},{1}'.format(('https:' + url), name))
