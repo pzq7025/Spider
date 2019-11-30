@@ -9,7 +9,7 @@ import csv
 from multiprocessing import Pool
 
 
-class Mt:
+class DouBan:
     def __init__(self):
         self.header = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
@@ -100,5 +100,5 @@ class Mt:
 
 
 if __name__ == '__main__':
-    mt = Mt()
-    mt.start()
+    db = DouBan()
+    db.start()
