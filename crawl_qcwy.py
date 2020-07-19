@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+# @descrip:前程无忧爬取
 import time
 
 import requests
